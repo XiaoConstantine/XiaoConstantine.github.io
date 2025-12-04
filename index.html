@@ -1,0 +1,52 @@
+---
+layout: default
+title: Home
+---
+
+<div class="posts">
+  
+  {% for post in paginator.posts %}
+  <article class="post">
+    <!-- Post title -->
+    <h1 class="post-title">
+      <a href="{{ site.baseurl }}{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h1>
+    
+    <!-- Date of the post -->
+    <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">{{ post.date | date_to_string }}</time>
+    
+    <!-- Post image -->
+    {% if post.image %}
+    <img class="post-thumbnail" src="{{ post.image }}" />
+    {% endif %}
+    
+    <!-- Show an excerpt from the article -->
+    <div class="excerpt-fadeout">
+      {{ post.excerpt }}
+    </div>
+    
+    <!-- Comment count -->
+    <!-- <a href="{{ site.baseurl }}{{ post.url }}#disqus_thread"></a> -->
+    
+  </article>
+  {% endfor %}
+  
+</div>
+
+<div class="pagination">
+  {% if paginator.next_page %}
+    <a class="pagination-item older" href="{{ paginator.next_page_path | prepend: site.baseurl }}">Older</a>
+  {% else %}
+    <span class="pagination-item older">Older</span>
+  {% endif %}
+  {% if paginator.previous_page %}
+    <a class="pagination-item newer" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">Newer</a>
+  {% else %}
+    <span class="pagination-item newer">Newer</span>
+  {% endif %}
+</div>
+
+<!-- Code for comment counts -->
+<script id="dsq-count-scr" src="//mccormickml.disqus.com/count.js" async></script>

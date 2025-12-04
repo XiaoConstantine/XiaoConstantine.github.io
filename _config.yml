@@ -1,0 +1,42 @@
+# Permalinks
+permalink:           pretty
+relative_permalinks: false
+
+# Setup
+title:               Xiao Constantine
+tagline:             AI, Systems, and ML Engineering
+url:                 https://xiaoConstantine.github.io
+timezone:            America/New_York
+paginate:            5
+
+# Assets
+#
+# We specify the directory for Jekyll so we can use @imports.
+sass:
+  sass_dir:          _sass
+  style:            :compressed
+
+# About/contact
+author:
+  name:              Xiao Constantine
+  url:               https://xiaoConstantine.github.io
+  email:             your-email@example.com
+  
+# Custom vars
+version:             1.0.0
+github:
+  repo:              https://github.com/XiaoConstantine/XiaoConstantine.github.io
+
+# This is the list of pages to include in the header of the website.
+pages_list:       
+  About: '/about/'
+  Archive: '/archive/'
+
+# Gems
+gems:
+  - jekyll-paginate
+  - jekyll-gist
+
+#analytics_id:       UA-76624103-1
+google_analytics_id: G-E25JX7SE8R
+
