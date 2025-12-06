@@ -3,7 +3,7 @@ permalink:           pretty
 relative_permalinks: false
 
 # Setup
-title:               Xiao Constantine
+title:               Xiao Cui
 tagline:             AI, Systems, and ML Engineering
 url:                 https://xiaoConstantine.github.io
 timezone:            America/New_York
@@ -18,7 +18,7 @@ sass:
 
 # About/contact
 author:
-  name:              Xiao Constantine
+  name:              Xiao Cui
   url:               https://xiaoConstantine.github.io
   email:             your-email@example.com
   
