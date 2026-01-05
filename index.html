@@ -4,35 +4,35 @@ title: Home
 ---
 
 <div class="posts">
-  
+
   {% for post in paginator.posts %}
   <article class="post">
+    <!-- Date of the post -->
+    <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">{{ post.date | date: "%b %d, %Y" }}</time>
+
     <!-- Post title -->
     <h1 class="post-title">
       <a href="{{ site.baseurl }}{{ post.url }}">
         {{ post.title }}
       </a>
     </h1>
-    
-    <!-- Date of the post -->
-    <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">{{ post.date | date_to_string }}</time>
-    
+
     <!-- Post image -->
     {% if post.image %}
-    <img class="post-thumbnail" src="{{ post.image }}" />
+    <img class="post-thumbnail" src="{{ post.image }}" alt="{{ post.title }}" />
     {% endif %}
-    
+
     <!-- Show an excerpt from the article -->
     <div class="excerpt-fadeout">
       {{ post.excerpt }}
     </div>
-    
-    <!-- Comment count -->
-    <!-- <a href="{{ site.baseurl }}{{ post.url }}#disqus_thread"></a> -->
-    
+
+    <!-- Read more link -->
+    <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Continue reading</a>
+
   </article>
   {% endfor %}
-  
+
 </div>
 
 <div class="pagination">
@@ -47,6 +47,3 @@ title: Home
     <span class="pagination-item newer">Newer</span>
   {% endif %}
 </div>
-
-<!-- Code for comment counts -->
-<script id="dsq-count-scr" src="//mccormickml.disqus.com/count.js" async></script>

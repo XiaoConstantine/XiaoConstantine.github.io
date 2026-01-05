@@ -1,25 +1,174 @@
-// Masthead
-//
-// Super small header above the content for site name and short description.
+// ==========================================================================
+// Masthead - Site Header
+// ==========================================================================
 
 .masthead {
-  padding-top:    1rem;
-  padding-bottom: 1rem;
-  margin-bottom: 3rem;
+  padding: $space-8 0;
+  margin-bottom: $space-10;
+  border-bottom: 1px solid $border-color;
+  position: relative;
+  animation: fadeIn 0.6s ease-out;
+
+  // Decorative accent line
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: $accent-primary;
+  }
 }
 
 .masthead-title {
-  margin-top: 0;
-  margin-bottom: 0;
-  color: $gray-4;
+  margin: 0 0 $space-2 0;
+  font-family: $font-display;
+  font-size: $text-3xl;
+  font-weight: $font-medium;
+  line-height: $leading-tight;
+  letter-spacing: -0.02em;
+  color: $ink-black;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: $space-4;
 
-  a {
-    color: inherit;
+  @media (min-width: $breakpoint-md) {
+    font-size: $text-4xl;
   }
 
+  // Site name link
+  > a {
+    color: inherit;
+    border-bottom: none;
+    transition: color $transition-base;
+    position: relative;
+
+    &:hover {
+      color: $accent-primary;
+      border-bottom: none;
+    }
+
+    // Subtle underline animation
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: $accent-primary;
+      transition: width $transition-base;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  // Navigation links
   small {
-    font-size: 75%;
-    font-weight: 400;
-    opacity: .5;
+    font-family: $font-body;
+    font-size: $text-sm;
+    font-weight: $font-medium;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 1;
+    color: $ink-muted;
+
+    a {
+      color: inherit;
+      border-bottom: none;
+      padding: $space-1 0;
+      position: relative;
+      transition: color $transition-fast;
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: $accent-primary;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform $transition-base;
+      }
+
+      &:hover {
+        color: $ink-dark;
+        border-bottom: none;
+
+        &::before {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
+      }
+    }
+  }
+}
+
+// Tagline
+.masthead-tagline {
+  font-family: $font-display;
+  font-size: $text-lg;
+  font-style: italic;
+  color: $ink-light;
+  margin-top: $space-3;
+  letter-spacing: 0.01em;
+
+  @media (min-width: $breakpoint-md) {
+    font-size: $text-xl;
+  }
+}
+
+// Alternative: Horizontal navigation below title
+.masthead-nav {
+  display: flex;
+  gap: $space-6;
+  margin-top: $space-4;
+  padding-top: $space-4;
+  border-top: 1px solid $border-color;
+
+  a {
+    font-size: $text-sm;
+    font-weight: $font-medium;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: $ink-muted;
+    border-bottom: none;
+    padding: $space-1 0;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: $accent-primary;
+      transform: scaleX(0);
+      transition: transform $transition-base;
+    }
+
+    &:hover {
+      color: $ink-dark;
+      border-bottom: none;
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    &.active {
+      color: $ink-dark;
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
   }
 }

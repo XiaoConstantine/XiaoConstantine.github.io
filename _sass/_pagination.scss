@@ -1,51 +1,88 @@
+// ==========================================================================
 // Pagination
-//
-// Super lightweight (HTML-wise) blog pagination. `span`s are provide for when
-// there are no more previous or next posts to show.
+// ==========================================================================
 
 .pagination {
-  overflow: hidden; // clearfix
-  margin: 0 -1.5rem 1rem;
-  color: #ccc;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: $space-4;
+  margin: $space-12 0 $space-6;
+  padding-top: $space-8;
+  border-top: 1px solid $border-color;
 }
 
-// Pagination items can be `span`s or `a`s
 .pagination-item {
-  display: block;
-  padding: 1rem;
-  border: solid #eee;
-  border-width: 1px 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  padding: $space-3 $space-5;
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $ink-muted;
+  background: $paper-white;
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  transition: all $transition-base;
 
-  &:first-child {
-    margin-bottom: -1px;
+  // Disabled state (span)
+  &:not(a) {
+    opacity: 0.4;
+    cursor: not-allowed;
   }
 }
 
-// Only provide a hover state for linked pagination items
-a.pagination-item:hover {
-  background-color: #f5f5f5;
+// Link state
+a.pagination-item {
+  color: $ink-dark;
+  border-bottom: none;
+
+  &:hover {
+    color: $accent-primary;
+    border-color: $accent-primary;
+    background: $paper-cream;
+    transform: translateY(-2px);
+    box-shadow: $shadow-sm;
+    border-bottom: none;
+  }
+
+  // Arrow indicators
+  &.older {
+    &::after {
+      content: ' →';
+      margin-left: $space-2;
+      transition: transform $transition-fast;
+    }
+
+    &:hover::after {
+      transform: translateX(4px);
+    }
+  }
+
+  &.newer {
+    &::before {
+      content: '← ';
+      margin-right: $space-2;
+      transition: transform $transition-fast;
+    }
+
+    &:hover::before {
+      transform: translateX(-4px);
+    }
+  }
 }
 
-@media (min-width: 30em) {
+// Mobile layout
+@media (max-width: $breakpoint-sm) {
   .pagination {
-    margin: 3rem 0;
+    flex-direction: column;
+    gap: $space-3;
   }
 
   .pagination-item {
-    float: left;
-    width: 50%;
-    border-width: 1px;
-
-    &:first-child {
-      margin-bottom: 0;
-      border-top-left-radius:    4px;
-      border-bottom-left-radius: 4px;
-    }
-    &:last-child {
-      margin-left: -1px;
-      border-top-right-radius:    4px;
-      border-bottom-right-radius: 4px;
-    }
+    width: 100%;
   }
 }

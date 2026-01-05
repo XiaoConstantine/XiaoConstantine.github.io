@@ -1,78 +1,297 @@
-// Code
-//
-// Inline and block-level code snippets. Includes tweaks to syntax highlighted
-// snippets from Pygments/Rouge and Gist embeds.
+// ==========================================================================
+// Code Styling
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Base Code Styles
+// --------------------------------------------------------------------------
 
 code,
 pre {
-  font-family: $code-font-family;
+  font-family: $font-mono;
 }
 
+// Inline code
 code {
-  padding: .25em .5em;
-  font-size: 85%;
-  color: $code-color;
-  background-color: #f9f9f9;
-  border-radius: 3px;
+  padding: 0.2em 0.4em;
+  font-size: 0.875em;
+  color: $accent-primary;
+  background-color: $paper-cream;
+  border-radius: $radius-sm;
+  border: 1px solid $border-color;
+  font-weight: $font-normal;
 }
 
+// Preformatted text
 pre {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: $space-6;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  code {
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+  }
 }
 
-pre code {
-  padding: 0;
-  font-size: 100%;
-  color: inherit;
-  background-color: transparent;
-}
+// --------------------------------------------------------------------------
+// Code Blocks (Pygments/Rouge)
+// --------------------------------------------------------------------------
 
-// Pygments via Jekyll
 .highlight {
-  padding: 1rem;
-  margin-bottom: 1rem;
-  font-size: .8rem;
-  line-height: 1.4;
-  background-color: #f9f9f9;
-  border-radius: .25rem;
+  position: relative;
+  padding: $space-5;
+  margin-bottom: $space-6;
+  font-size: $text-sm;
+  line-height: 1.5;
+  background-color: #1E1E1E;  // VS Code dark theme inspired
+  border-radius: $radius-lg;
+  box-shadow: $shadow-md;
+  overflow: hidden;
+
+  // Decorative top bar (window controls)
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 32px;
+    background: linear-gradient(to bottom, #2D2D2D, #252525);
+    border-bottom: 1px solid #1A1A1A;
+    border-radius: $radius-lg $radius-lg 0 0;
+  }
+
+  // Window dots
+  &::after {
+    content: '● ● ●';
+    position: absolute;
+    top: 8px;
+    left: $space-4;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #555;
+  }
 
   pre {
     margin-bottom: 0;
+    margin-top: 24px;  // Space for top bar
+    padding: 0;
     overflow-x: auto;
+    background: transparent;
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #2D2D2D;
+      border-radius: $radius-full;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #555;
+      border-radius: $radius-full;
+
+      &:hover {
+        background: #777;
+      }
+    }
   }
 
+  code {
+    color: #D4D4D4;  // Light gray text
+    font-size: $text-sm;
+    line-height: 1.6;
+  }
+
+  // Line numbers
   .lineno {
-    display: inline-block; // Ensures the null space also isn't selectable
-    padding-right: .75rem;
-    padding-left: .25rem;
-    color: #999;
-    // Make sure numbers aren't selectable
+    display: inline-block;
+    padding-right: $space-4;
+    padding-left: $space-2;
+    color: #606060;
+    text-align: right;
+    min-width: 2.5em;
+    user-select: none;
     -webkit-user-select: none;
-       -moz-user-select: none;
-            user-select: none;
+    -moz-user-select: none;
+    border-right: 1px solid #333;
+    margin-right: $space-4;
   }
 }
 
+// --------------------------------------------------------------------------
+// Syntax Highlighting (Dark Theme)
+// --------------------------------------------------------------------------
 
-// Gist via GitHub Pages
-// .gist .gist-file {
-//   font-family: Menlo, Monaco, "Courier New", monospace !important;
-// }
-// .gist .markdown-body {
-//   padding: 15px;
-// }
-// .gist pre {
-//   padding: 0;
-//   background-color: transparent;
-// }
-// .gist .gist-file .gist-data {
-//   font-size: .8rem !important;
-//   line-height: 1.4;
-// }
-// .gist code {
-//   padding: 0;
-//   color: inherit;
-//   background-color: transparent;
-//   border-radius: 0;
-// }
+.highlight {
+  // Comments
+  .c, .c1, .cm, .cs {
+    color: #6A9955;
+    font-style: italic;
+  }
+
+  // Strings
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sr, .ss, .sx {
+    color: #CE9178;
+  }
+
+  // Keywords
+  .k, .kc, .kd, .kn, .kp, .kr, .kt {
+    color: #569CD6;
+    font-weight: $font-medium;
+  }
+
+  // Numbers
+  .m, .mf, .mh, .mi, .mo, .il {
+    color: #B5CEA8;
+  }
+
+  // Operators
+  .o, .ow {
+    color: #D4D4D4;
+  }
+
+  // Punctuation
+  .p {
+    color: #D4D4D4;
+  }
+
+  // Names/Identifiers
+  .n, .na, .nb, .nc, .nd, .ne, .nf, .ni, .nl, .nn, .no, .nt, .nv {
+    color: #9CDCFE;
+  }
+
+  // Function names
+  .nf {
+    color: #DCDCAA;
+  }
+
+  // Class names
+  .nc {
+    color: #4EC9B0;
+  }
+
+  // Constants
+  .no {
+    color: #4FC1FF;
+  }
+
+  // Errors
+  .err {
+    color: #F44747;
+    background-color: transparent;
+  }
+
+  // Generic
+  .ge {
+    font-style: italic;
+  }
+  .gs {
+    font-weight: $font-bold;
+  }
+
+  // Diff
+  .gd {
+    color: #F44747;
+    background-color: rgba(244, 71, 71, 0.1);
+  }
+  .gi {
+    color: #89D185;
+    background-color: rgba(137, 209, 133, 0.1);
+  }
+
+  // HTML/XML
+  .nt {
+    color: #569CD6;
+  }
+  .na {
+    color: #9CDCFE;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Light Theme Alternative (optional)
+// --------------------------------------------------------------------------
+
+.highlight-light {
+  background-color: $paper-cream;
+  border: 1px solid $border-color;
+
+  &::before {
+    background: linear-gradient(to bottom, $paper-white, $paper-cream);
+    border-bottom-color: $border-color;
+  }
+
+  &::after {
+    color: #CCC;
+  }
+
+  code {
+    color: $ink-dark;
+  }
+
+  .lineno {
+    color: $ink-muted;
+    border-right-color: $border-color;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Inline Code in Headings
+// --------------------------------------------------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+  code {
+    font-size: 0.85em;
+    font-weight: inherit;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Code in Lists
+// --------------------------------------------------------------------------
+
+li code {
+  font-size: 0.9em;
+}
+
+// --------------------------------------------------------------------------
+// Copy Button (optional enhancement)
+// --------------------------------------------------------------------------
+
+.highlight-wrapper {
+  position: relative;
+
+  .copy-button {
+    position: absolute;
+    top: $space-2;
+    right: $space-2;
+    padding: $space-2 $space-3;
+    font-family: $font-body;
+    font-size: $text-xs;
+    color: #888;
+    background: #333;
+    border: none;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity $transition-fast, background $transition-fast;
+    z-index: 10;
+
+    &:hover {
+      background: #444;
+      color: #FFF;
+    }
+  }
+
+  &:hover .copy-button {
+    opacity: 1;
+  }
+}

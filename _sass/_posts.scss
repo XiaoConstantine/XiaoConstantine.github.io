@@ -1,75 +1,425 @@
-// Posts and pages
-//
-// Each post is wrapped in `.post` and is used on default and post layouts. Each
-// page is wrapped in `.page` and is only used on the page layout.
+// ==========================================================================
+// Posts & Pages
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Post/Page Container
+// --------------------------------------------------------------------------
 
 .page,
 .post {
-  margin-bottom: 4em;
+  margin-bottom: $space-12;
 
   li + li {
-    margin-top: .25rem;
+    margin-top: $space-2;
   }
 }
 
-// Blog post or page title
-.page-title,
-.post-title,
-.post-title a {
-  color: #303030;
-}
-.page-title,
-.post-title {
+// --------------------------------------------------------------------------
+// Page Title
+// --------------------------------------------------------------------------
+
+.page-title {
+  font-family: $font-display;
+  font-size: $text-4xl;
+  font-weight: $font-normal;
+  color: $ink-black;
   margin-top: 0;
+  margin-bottom: $space-6;
+  letter-spacing: -0.02em;
+  line-height: $leading-tight;
+
+  @media (min-width: $breakpoint-md) {
+    font-size: $text-5xl;
+  }
 }
 
-// Meta data line below post title
+// --------------------------------------------------------------------------
+// Post Title
+// --------------------------------------------------------------------------
+
+.post-title {
+  font-family: $font-display;
+  font-size: $text-2xl;
+  font-weight: $font-medium;
+  color: $ink-black;
+  margin-top: 0;
+  margin-bottom: $space-2;
+  letter-spacing: -0.01em;
+  line-height: $leading-snug;
+
+  @media (min-width: $breakpoint-md) {
+    font-size: $text-3xl;
+  }
+
+  a {
+    color: inherit;
+    border-bottom: none;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $accent-primary;
+      border-bottom: none;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// Post Meta (Date)
+// --------------------------------------------------------------------------
+
 .post-date {
-  display: block;
-  margin-top: -.5rem;
-  margin-bottom: 1rem;
-  color: #9a9a9a;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  margin-top: 0;
+  margin-bottom: $space-5;
+  font-family: $font-mono;
+  font-size: $text-sm;
+  color: $ink-muted;
+  letter-spacing: 0.02em;
+
+  // Calendar icon (optional)
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: currentColor;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'%3E%3C/path%3E%3C/svg%3E");
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'%3E%3C/path%3E%3C/svg%3E");
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+  }
 }
 
+// --------------------------------------------------------------------------
+// Post Cards (for index/archive)
+// --------------------------------------------------------------------------
 
-// Related posts
+.posts {
+  // Staggered animation for post cards
+  .post {
+    animation: fadeInUp 0.5s ease-out backwards;
+
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.1}s;
+      }
+    }
+  }
+}
+
+article.post {
+  padding: $space-6;
+  margin-bottom: $space-6;
+  background: $paper-white;
+  border: 1px solid $border-color;
+  border-radius: $radius-lg;
+  transition: box-shadow $transition-base, transform $transition-base, border-color $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+    border-color: $border-dark;
+  }
+
+  // First post featured styling
+  &:first-child {
+    border-left: 4px solid $accent-primary;
+    background: linear-gradient(135deg, $paper-white 0%, $paper-cream 100%);
+  }
+}
+
+// --------------------------------------------------------------------------
+// Post Thumbnail
+// --------------------------------------------------------------------------
+
+.post-thumbnail {
+  max-height: 280px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: $radius-md;
+  margin-bottom: $space-4;
+  box-shadow: $shadow-sm;
+}
+
+// --------------------------------------------------------------------------
+// Read More Link
+// --------------------------------------------------------------------------
+
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  margin-top: $space-4;
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: $font-semibold;
+  color: $accent-primary;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: none;
+  transition: gap $transition-fast;
+
+  &:hover {
+    gap: $space-3;
+    border-bottom: none;
+  }
+
+  &::after {
+    content: '→';
+    transition: transform $transition-fast;
+  }
+
+  &:hover::after {
+    transform: translateX(4px);
+  }
+}
+
+// --------------------------------------------------------------------------
+// Related Posts
+// --------------------------------------------------------------------------
+
 .related {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  margin-bottom: 2rem;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+  padding: $space-8 0;
+  margin-top: $space-12;
+  margin-bottom: $space-8;
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+
+  h2 {
+    font-family: $font-display;
+    font-size: $text-xl;
+    font-weight: $font-medium;
+    margin-top: 0;
+    margin-bottom: $space-6;
+    padding: 0;
+    border: none;
+    color: $ink-dark;
+  }
 }
 
 .related-posts {
   padding-left: 0;
   list-style: none;
 
-  h3 {
-    margin-top: 0;
-  }
-
   li {
-    small {
-      font-size: 75%;
-      color: #999;
+    padding: 0;
+    margin-bottom: $space-4;
+
+    &::before {
+      display: none;
     }
 
-    a:hover {
-      color: #268bd2;
-      text-decoration: none;
+    small {
+      font-family: $font-mono;
+      font-size: $text-xs;
+      color: $ink-muted;
+    }
 
-      small {
-        color: inherit;
+    a {
+      font-weight: $font-medium;
+      border-bottom: 1px solid transparent;
+
+      &:hover {
+        color: $accent-primary;
+        border-bottom-color: $accent-primary;
+
+        small {
+          color: inherit;
+        }
       }
     }
   }
 }
 
-.post-thumbnail {
-  max-height: 240px;   // adjust to taste (e.g., 200px or 180px for tighter layout)
-  object-fit: cover;
-  width: 100%;
-  //border-radius: 6px;  // optional, just for slightly rounded corners
+// --------------------------------------------------------------------------
+// Single Post Layout
+// --------------------------------------------------------------------------
+
+.post-header {
+  margin-bottom: $space-10;
+  padding-bottom: $space-6;
+  border-bottom: 1px solid $border-color;
+  text-align: center;
+
+  .post-title {
+    font-size: $text-4xl;
+    margin-bottom: $space-4;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: $text-5xl;
+    }
+  }
+
+  .post-date {
+    justify-content: center;
+    margin-bottom: 0;
+  }
 }
 
+.post-content {
+  // First paragraph lead style
+  > p:first-of-type {
+    font-size: $text-lg;
+    color: $ink-medium;
+    line-height: $leading-relaxed;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: $text-xl;
+    }
+  }
+
+  // Drop cap for first letter (optional, uncomment to enable)
+  // > p:first-of-type::first-letter {
+  //   float: left;
+  //   font-family: $font-display;
+  //   font-size: 4rem;
+  //   line-height: 0.8;
+  //   padding-right: $space-3;
+  //   padding-top: $space-1;
+  //   color: $accent-primary;
+  // }
+}
+
+// --------------------------------------------------------------------------
+// Archive Page
+// --------------------------------------------------------------------------
+
+.archive-year {
+  margin-top: $space-10;
+  margin-bottom: $space-4;
+  font-family: $font-display;
+  font-size: $text-2xl;
+  color: $ink-black;
+  position: relative;
+  padding-left: $space-4;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 100%;
+    background: $accent-primary;
+    border-radius: $radius-full;
+  }
+}
+
+.archive-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding: 0;
+    margin-bottom: $space-3;
+    display: flex;
+    align-items: baseline;
+    gap: $space-4;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  time {
+    flex-shrink: 0;
+    font-family: $font-mono;
+    font-size: $text-sm;
+    color: $ink-muted;
+    width: 5em;
+  }
+
+  a {
+    font-weight: $font-medium;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Post Navigation (prev/next)
+// --------------------------------------------------------------------------
+
+.post-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-4;
+  margin-top: $space-12;
+  padding-top: $space-8;
+  border-top: 1px solid $border-color;
+}
+
+.post-nav-item {
+  display: flex;
+  flex-direction: column;
+  padding: $space-4;
+  background: $paper-cream;
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  transition: all $transition-base;
+
+  &:not(.disabled):hover {
+    background: $paper-white;
+    border-color: $accent-primary;
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+
+  &.disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.post-nav-prev {
+  text-align: left;
+}
+
+.post-nav-next {
+  text-align: right;
+}
+
+.post-nav-label {
+  font-family: $font-body;
+  font-size: $text-xs;
+  font-weight: $font-medium;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $ink-muted;
+  margin-bottom: $space-2;
+}
+
+.post-nav-title {
+  font-family: $font-display;
+  font-size: $text-base;
+  font-weight: $font-medium;
+  color: $ink-dark;
+  line-height: $leading-snug;
+}
+
+a.post-nav-item {
+  border-bottom: none;
+
+  &:hover {
+    border-bottom: none;
+
+    .post-nav-title {
+      color: $accent-primary;
+    }
+  }
+}
+
+// Mobile: stack vertically
+@media (max-width: $breakpoint-sm) {
+  .post-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .post-nav-next {
+    text-align: left;
+  }
+}

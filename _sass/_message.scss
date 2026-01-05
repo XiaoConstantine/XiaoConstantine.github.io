@@ -1,11 +1,41 @@
-// Messages
-//
-// Show alert messages to users. You may add it to single elements like a `<p>`,
-// or to a parent if there are multiple elements to show.
+// ==========================================================================
+// Messages & Alerts
+// ==========================================================================
 
 .message {
-  margin-bottom: 1rem;
-  padding: 1rem;
-  color: #717171;
-  background-color: #f9f9f9;
+  margin-bottom: $space-6;
+  padding: $space-5;
+  color: $ink-medium;
+  background-color: $paper-cream;
+  border-radius: $radius-md;
+  border-left: 4px solid $accent-primary;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Variants
+.message-info {
+  background-color: #EBF5FF;
+  border-left-color: #3B82F6;
+  color: #1E40AF;
+}
+
+.message-success {
+  background-color: #ECFDF5;
+  border-left-color: #10B981;
+  color: #065F46;
+}
+
+.message-warning {
+  background-color: #FFFBEB;
+  border-left-color: #F59E0B;
+  color: #92400E;
+}
+
+.message-error {
+  background-color: #FEF2F2;
+  border-left-color: #EF4444;
+  color: #991B1B;
 }

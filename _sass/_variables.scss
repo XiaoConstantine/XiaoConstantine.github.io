@@ -1,30 +1,141 @@
-$gray-1: #f9f9f9;
-$gray-2: #ccc;
-$gray-3: #767676;
-$gray-4: #515151;
-$gray-5: #313131;
+// ==========================================================================
+// Design System: "Ink & Paper" Editorial
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Color Palette
+// --------------------------------------------------------------------------
+
+// Paper tones (backgrounds)
+$paper-white: #FDFCFA;
+$paper-cream: #F8F6F1;
+$paper-warm: #F2EDE4;
+
+// Ink tones (text)
+$ink-black: #1A1816;
+$ink-dark: #2D2926;
+$ink-medium: #4A4543;
+$ink-light: #6B6662;
+$ink-muted: #9A9590;
+
+// Accent colors
+$accent-primary: #C45230;     // Terracotta - warm, distinctive
+$accent-hover: #A8432A;       // Darker terracotta
+$accent-subtle: #E8D4C8;      // Soft terracotta tint
+
+// Utility colors
+$border-color: #E5E0D8;
+$border-dark: #D1C9BD;
+$highlight-bg: #FFF8E7;
+
+// --------------------------------------------------------------------------
+// Typography
+// --------------------------------------------------------------------------
+
+// Font families
+$font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+$font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$font-mono: 'JetBrains Mono', 'SF Mono', Menlo, Monaco, 'Courier New', monospace;
+
+// Font sizes (fluid scale)
+$text-xs: 0.75rem;      // 12px
+$text-sm: 0.875rem;     // 14px
+$text-base: 1rem;       // 16px
+$text-lg: 1.125rem;     // 18px
+$text-xl: 1.25rem;      // 20px
+$text-2xl: 1.5rem;      // 24px
+$text-3xl: 1.875rem;    // 30px
+$text-4xl: 2.25rem;     // 36px
+$text-5xl: 3rem;        // 48px
+
+// Line heights
+$leading-tight: 1.2;
+$leading-snug: 1.375;
+$leading-normal: 1.5;
+$leading-relaxed: 1.625;
+$leading-loose: 1.75;
+
+// Font weights
+$font-light: 300;
+$font-normal: 400;
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+
+// --------------------------------------------------------------------------
+// Spacing Scale
+// --------------------------------------------------------------------------
+
+$space-1: 0.25rem;   // 4px
+$space-2: 0.5rem;    // 8px
+$space-3: 0.75rem;   // 12px
+$space-4: 1rem;      // 16px
+$space-5: 1.25rem;   // 20px
+$space-6: 1.5rem;    // 24px
+$space-8: 2rem;      // 32px
+$space-10: 2.5rem;   // 40px
+$space-12: 3rem;     // 48px
+$space-16: 4rem;     // 64px
+$space-20: 5rem;     // 80px
+$space-24: 6rem;     // 96px
+
+// --------------------------------------------------------------------------
+// Layout
+// --------------------------------------------------------------------------
+
+$content-width: 42rem;        // ~672px - wider for comfortable reading
+$breakpoint-sm: 30em;         // 480px
+$breakpoint-md: 48em;         // 768px
+$breakpoint-lg: 64em;         // 1024px
+
+// --------------------------------------------------------------------------
+// Effects
+// --------------------------------------------------------------------------
+
+// Border radius
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-full: 9999px;
+
+// Shadows
+$shadow-sm: 0 1px 2px rgba(26, 24, 22, 0.04);
+$shadow-md: 0 4px 6px -1px rgba(26, 24, 22, 0.05), 0 2px 4px -1px rgba(26, 24, 22, 0.03);
+$shadow-lg: 0 10px 15px -3px rgba(26, 24, 22, 0.05), 0 4px 6px -2px rgba(26, 24, 22, 0.02);
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-base: 250ms ease;
+$transition-slow: 400ms ease;
+
+// --------------------------------------------------------------------------
+// Legacy compatibility (keeping old variable names)
+// --------------------------------------------------------------------------
+
+$gray-1: $paper-cream;
+$gray-2: $border-color;
+$gray-3: $ink-muted;
+$gray-4: $ink-medium;
+$gray-5: $ink-dark;
 
 $red: #ac4142;
 $orange: #d28445;
 $yellow: #f4bf75;
 $green: #90a959;
 $cyan: #75b5aa;
-$blue: #268bd2;
-// $blue: #6a9fb5;
+$blue: $accent-primary;
 $brown: #8f5536;
 
-$root-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
-$root-font-size: 16px;
-$root-line-height: 1.5;
+$root-font-family: $font-body;
+$root-font-size: 17px;
+$root-line-height: $leading-relaxed;
 
-$body-color: #515151;
-$body-bg: #fff;
-$link-color: $blue;
+$body-color: $ink-dark;
+$body-bg: $paper-white;
+$link-color: $accent-primary;
 
-$border-color: #e5e5e5;
+$large-breakpoint: $breakpoint-md;
+$large-font-size: 18px;
 
-$large-breakpoint: 38em;
-$large-font-size: 20px;
-
-$code-font-family: Menlo, Monaco, "Courier New", monospace;
-$code-color: #bf616a;
+$code-font-family: $font-mono;
+$code-color: #C45230;
