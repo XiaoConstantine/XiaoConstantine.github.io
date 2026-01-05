@@ -3,7 +3,7 @@
 // ==========================================================================
 
 // --------------------------------------------------------------------------
-// Color Palette
+// Color Palette - Light Theme
 // --------------------------------------------------------------------------
 
 // Paper tones (backgrounds)
@@ -27,6 +27,29 @@ $accent-subtle: #E8D4C8;      // Soft terracotta tint
 $border-color: #E5E0D8;
 $border-dark: #D1C9BD;
 $highlight-bg: #FFF8E7;
+
+// --------------------------------------------------------------------------
+// Color Palette - Dark Theme
+// --------------------------------------------------------------------------
+
+// Dark paper tones (backgrounds)
+$dark-bg: #1A1816;
+$dark-bg-alt: #242220;
+$dark-bg-elevated: #2D2A28;
+
+// Dark ink tones (text)
+$dark-text: #E8E4E0;
+$dark-text-secondary: #C4BEB8;
+$dark-text-muted: #8A8480;
+
+// Dark accent (slightly brighter for contrast)
+$dark-accent: #E05A35;
+$dark-accent-hover: #F06A45;
+$dark-accent-subtle: #3D2A24;
+
+// Dark utility colors
+$dark-border: #3A3634;
+$dark-border-light: #4A4644;
 
 // --------------------------------------------------------------------------
 // Typography

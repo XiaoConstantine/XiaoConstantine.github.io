@@ -8,7 +8,7 @@
   gap: $space-4;
   margin: $space-12 0 $space-6;
   padding-top: $space-8;
-  border-top: 1px solid $border-color;
+  border-top: 1px solid var(--color-border);
 }
 
 .pagination-item {
@@ -22,9 +22,9 @@
   font-weight: $font-medium;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: $ink-muted;
-  background: $paper-white;
-  border: 1px solid $border-color;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
   border-radius: $radius-md;
   transition: all $transition-base;
 
@@ -37,15 +37,15 @@
 
 // Link state
 a.pagination-item {
-  color: $ink-dark;
+  color: var(--color-text);
   border-bottom: none;
 
   &:hover {
-    color: $accent-primary;
-    border-color: $accent-primary;
-    background: $paper-cream;
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background: var(--color-bg-alt);
     transform: translateY(-2px);
-    box-shadow: $shadow-sm;
+    box-shadow: var(--shadow-sm);
     border-bottom: none;
   }
 

@@ -55,13 +55,13 @@ main {
 footer, .footer {
   margin-top: $space-16;
   padding: $space-8 0;
-  border-top: 1px solid $border-color;
+  border-top: 1px solid var(--color-border);
   text-align: center;
   animation: fadeIn 0.6s ease-out 0.4s both;
 
   small {
     font-size: $text-sm;
-    color: $ink-muted;
+    color: var(--color-text-muted);
     display: block;
   }
 
@@ -73,12 +73,12 @@ footer, .footer {
     margin-top: $space-4;
 
     a {
-      color: $ink-muted;
+      color: var(--color-text-muted);
       border-bottom: none;
       transition: color $transition-fast, transform $transition-fast;
 
       &:hover {
-        color: $accent-primary;
+        color: var(--color-accent);
         transform: translateY(-2px);
         border-bottom: none;
       }
@@ -91,7 +91,7 @@ footer, .footer {
     font-family: $font-display;
     font-style: italic;
     font-size: $text-sm;
-    color: $ink-muted;
+    color: var(--color-text-muted);
   }
 }
 
@@ -106,7 +106,7 @@ footer, .footer {
 .section-header {
   margin-bottom: $space-8;
   padding-bottom: $space-4;
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid var(--color-border);
 
   h2 {
     margin: 0;

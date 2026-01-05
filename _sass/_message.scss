@@ -5,10 +5,10 @@
 .message {
   margin-bottom: $space-6;
   padding: $space-5;
-  color: $ink-medium;
-  background-color: $paper-cream;
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg-alt);
   border-radius: $radius-md;
-  border-left: 4px solid $accent-primary;
+  border-left: 4px solid var(--color-accent);
 
   p:last-child {
     margin-bottom: 0;
